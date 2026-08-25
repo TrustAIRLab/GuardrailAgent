@@ -1,0 +1,7 @@
+smolagents
+litellm
+openai
+embedchain
+filelock
+pyyaml
+chromadb

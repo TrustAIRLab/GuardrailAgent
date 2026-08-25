@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.lock
+*.out
+hf-cache/
+output/
+jobs/
+dataset/
+cluster/
+.env
+hf-cache

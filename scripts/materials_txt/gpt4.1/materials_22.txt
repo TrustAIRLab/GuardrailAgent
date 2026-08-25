@@ -1,0 +1,54 @@
+
+============================================================
+FILE: rolebreak.pdf
+============================================================
+1) Method Summary  
+- Name: RoleBreak  
+- Description: A jailbreak attack that induces character hallucination in role-playing LLMs by exploiting two core mechanisms: query sparsity (queries outside the model's training coverage) and role-query conflict (queries that contradict predefined character roles). This leads the model to break character and generate inconsistent or unauthorized content.  
+- Keywords: character hallucination, query sparsity, role-query conflict
+
+2) Typical Prompt Structure  
+- role-setting instruction + out-of-distribution or conflicting user query
+
+3) Defender’s Perspective  
+- Surface Cues:  
+  • Prompts include explicit or implicit role-playing/setup instructions defining a character or persona followed by queries that stretch or contradict this role.  
+  • Queries may appear unusual, obscure, or creatively demanding beyond typical in-character requests (suggesting query sparsity).  
+  • Presence of conflict cues, e.g., requests for information or behavior the defined character should not know or perform.  
+- Trigger Mechanics:  
+  • The model’s conditioning on a role clashes with an adversarial input forcing it to hallucinate or break the role constraints.  
+- Quick Checks:  
+  • Identify presence of explicit role or persona instructions followed by queries that are out-of-character or logically inconsistent with the role.  
+  • Flag prompts exhibiting abrupt change in topic or style inconsistent with established role.  
+  • Monitor for queries that implicitly require ignoring role limitations or knowledge boundaries.  
+  • Look for semi-automated or algorithmically generated inputs designed to maximize mismatch or conflict with role instructions.  
+  • Note that queries do not rely on obfuscation or encoding tricks but on semantic conflict and data sparsity, so detection must focus on logical and semantic inconsistency.  
+
+4) Examples From the Paper  
+- No specific prompt examples were provided verbatim in the paper.
+
+============================================================
+FILE: flipattack.pdf
+============================================================
+1) Method Summary
+- Name: FlipAttack
+- Description: FlipAttack is a jailbreak attack that injects left-side noise into prompts by flipping text elements (words, characters) using four flipping modes, degrading LLM’s left-to-right comprehension and disguising harmful requests. It guides models to denoise and reconstruct the original harmful intent via roleplay, chain-of-thought, or few-shot sequences, enabling effective jailbreaks within a single query.
+- Keywords: left-side noise, flipping modes, single-query jailbreak
+
+2) Typical Prompt Structure
+- left-side flipped/noisy prompt + flipping guidance (roleplay/coT) + harmful query
+
+3) Defender’s Perspective
+- Look for unusual transformations just at the start (left side) of the prompt, such as:
+  • Flipped word order (e.g., reversed sentence segments or scrambled initial words)
+  • Character-level flips inside words or sentences (partial reversal, alternating characters)
+  • Entire prompt starting with distorted text that is a flipped variation of a meaningful harmful request
+- Presence of instructions or roleplay guidance that teach the model how to "flip back," "denoise," or reconstruct the original sentence, often via chain-of-thought reasoning or roleplay personas
+- Unnatural or overly complex directives embedded early, asking the model to perform “text flipping,” “decoding of flipped text,” or “understand flipped sequences”
+- Prompts that appear self-referential or meta (the prompt describes operations on itself, e.g., “consider the flipped version of the previous text,” “decode the sentence by reversing characters”)
+- Single query contains both the obfuscated offensive intent and explicit detailed guidance for the LLM to recover and execute it
+- Lack of external ciphering methods or complex assistant tasks, relying solely on prompt internal manipulations
+- Detection heuristic: flag prompts with left-heavy distortions combined with roleplay/coT style denoising instructions
+
+4) Examples From the Paper
+- No specific explicit prompt text examples are provided in the paper manuscript excerpts.

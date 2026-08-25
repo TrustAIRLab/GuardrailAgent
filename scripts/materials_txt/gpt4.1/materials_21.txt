@@ -1,0 +1,28 @@
+
+============================================================
+FILE: rolebreak.pdf
+============================================================
+1) Method Summary  
+- Name: RoleBreak  
+- Description: A jailbreak attack that induces character hallucination in role-playing LLMs by exploiting two core mechanisms: query sparsity (queries outside the model's training coverage) and role-query conflict (queries that contradict predefined character roles). This leads the model to break character and generate inconsistent or unauthorized content.  
+- Keywords: character hallucination, query sparsity, role-query conflict
+
+2) Typical Prompt Structure  
+- role-setting instruction + out-of-distribution or conflicting user query
+
+3) Defender’s Perspective  
+- Surface Cues:  
+  • Prompts include explicit or implicit role-playing/setup instructions defining a character or persona followed by queries that stretch or contradict this role.  
+  • Queries may appear unusual, obscure, or creatively demanding beyond typical in-character requests (suggesting query sparsity).  
+  • Presence of conflict cues, e.g., requests for information or behavior the defined character should not know or perform.  
+- Trigger Mechanics:  
+  • The model’s conditioning on a role clashes with an adversarial input forcing it to hallucinate or break the role constraints.  
+- Quick Checks:  
+  • Identify presence of explicit role or persona instructions followed by queries that are out-of-character or logically inconsistent with the role.  
+  • Flag prompts exhibiting abrupt change in topic or style inconsistent with established role.  
+  • Monitor for queries that implicitly require ignoring role limitations or knowledge boundaries.  
+  • Look for semi-automated or algorithmically generated inputs designed to maximize mismatch or conflict with role instructions.  
+  • Note that queries do not rely on obfuscation or encoding tricks but on semantic conflict and data sparsity, so detection must focus on logical and semantic inconsistency.  
+
+4) Examples From the Paper  
+- No specific prompt examples were provided verbatim in the paper.
