@@ -150,6 +150,10 @@ Please obtain these datasets from their original sources.
 
 The code for automated knowledge base construction and feedback-driven updates is currently being organized and will be released soon.
 
+## Ethical Considerations
+
+This repository is intended for research on jailbreak defense only. The knowledge bases contain jailbreak prompts and harmful model outputs, so please use them responsibly and do not use them to attack real systems or generate harmful content.
+
 ## Citation
 
 ```bibtex
@@ -161,4 +165,8 @@ The code for automated knowledge base construction and feedback-driven updates i
   year = {2026}
 }
 ```
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE). Third-party datasets and other external resources are subject to their own licenses and terms.
 
